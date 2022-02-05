@@ -1,6 +1,10 @@
 package com.financialtracking.controller;
 
 import com.financialtracking.Repository.UserRepository;
+import com.financialtracking.domain.User;
+import com.financialtracking.dto.AccountDTO;
+import com.financialtracking.sercice.AccountService;
+import com.financialtracking.sercice.UserService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -16,18 +20,28 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController
 {
     private final UserRepository userRepository;
+    private final AccountService accountService;
+    private final UserService userService;
 
     @GetMapping("/test")
     public ResponseEntity<?> getTest()
     {
+        User user = new User();
         Pageable pageable = PageRequest.of(10, 10);
         //return ResponseEntity.ok(userRepository.findAll(pageable));
-        return null;
+
+        AccountDTO accountDTO = AccountDTO.builder()
+                .title("Garanti")
+                .build();
+
+        accountService.save(accountDTO, 1L);
+
+        return ResponseEntity.ok(userRepository.getUser());
     }
 
     @GetMapping("/getUser")
     public ResponseEntity<?> getUser()
     {
-        return ResponseEntity.ok(userRepository.findFirstById(562L));
+        return ResponseEntity.ok(userService.findUserById(1L));
     }
 }

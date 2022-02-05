@@ -3,6 +3,7 @@ package com.financialtracking.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,4 +29,17 @@ public class Account
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Action> actions;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<AccountActivity> accountActivities;
+
+    public Account(long id)
+    {
+        this.id = id;
+    }
 }

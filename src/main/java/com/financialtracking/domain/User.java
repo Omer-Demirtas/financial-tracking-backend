@@ -20,7 +20,7 @@ public class User
     private Long id;
 
     @Column( name = "EMAIL")
-    private String emil;
+    private String email;
 
     @Column( name = "USERNAME")
     private String username;
@@ -38,4 +38,9 @@ public class User
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<Account> accounts;
+
+    public User(Long id)
+    {
+        this.id = id;
+    }
 }

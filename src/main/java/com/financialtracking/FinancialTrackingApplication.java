@@ -4,12 +4,14 @@ import com.financialtracking.Repository.AccountRepository;
 import com.financialtracking.Repository.OrganizationRepository;
 import com.financialtracking.Repository.UserRepository;
 import com.financialtracking.domain.Account;
+import com.financialtracking.domain.Organization;
 import com.financialtracking.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
 
 
 @SpringBootApplication
@@ -29,22 +31,24 @@ public class FinancialTrackingApplication implements CommandLineRunner
 	{
 		/*
 		Account account = Account.builder()
-				.title("ACCOUNT")
-				.description("DESCRIPTION")
-				.user(User.builder().id(562L).build())
+				.title("İŞ BANKASI")
+				.description("Banka")
+				.user(User.builder().id(1L).build())
 				.build();
 
 		accountRepository.save(account);
-		*/
 
-		/*
 		Organization organization = organizationRepository.save(
 				Organization.builder()
 						.title("GENERIC")
-						//.users(Arrays.asList(user))
+						.users(Arrays.asList(
+								User.builder()
+									.id(1L)
+									.build()))
 						.build()
 		);
-
+*/
+		/*
 		User user = userRepository.save(
 				User.builder()
 						.username("Ömer")
