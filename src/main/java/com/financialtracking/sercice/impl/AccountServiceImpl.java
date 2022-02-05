@@ -25,14 +25,14 @@ public class AccountServiceImpl implements AccountService
     @Override
     public AccountDTO save(AccountDTO accountDTO, Long id)
     {
-        /*
+
         Account account = Account.builder()
                 .title(accountDTO.getTitle())
                 .user(new User(id))
                 .build();
 
         account = accountRepository.save(account);
-        */
+
         List<AccountActivity> activities = new ArrayList<>();
 
         for (int i = 0; i < 12; i++)
@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService
                     AccountActivity.builder()
                             .year(2021)
                             .month(""+i)
-                            .account(new Account(3L))
+                            .account(account)
                             .income(0 + (Math.random() * (9000)))
                             .expense(0 + (Math.random() * (9000)))
                             .build()

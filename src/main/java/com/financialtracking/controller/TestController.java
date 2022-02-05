@@ -10,11 +10,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class TestController
@@ -31,7 +33,7 @@ public class TestController
         //return ResponseEntity.ok(userRepository.findAll(pageable));
 
         AccountDTO accountDTO = AccountDTO.builder()
-                .title("Garanti")
+                .title("İş bankası")
                 .build();
 
         accountService.save(accountDTO, 1L);
